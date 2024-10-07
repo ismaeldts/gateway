@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gateway-mcsv
+  cloud:
+    gateway:
+      routes:
+        - id: mcsv-property
+          uri: http://localhost:8081  # Dirección IP y puerto del microservicio Feedback
+          predicates:
+            - Path=/api/v1/properties/**
+
+        - id: feedback-mcsv
+          uri: http://localhost:8083  # Dirección IP y puerto del microservicio Feedback
+          predicates:
+            - Path=/api/v1/feedback/**
